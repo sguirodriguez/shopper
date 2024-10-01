@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3333:3333"
+    environment:
+      NODE_ENV: production
+      DB_DATABASE: db_shopper_docker
+      DB_USERNAME: db_shopper_owner_docker
+      DB_PASSWORD: wpNz3yCBXMj6
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_CONNECTION: postgres://db_shopper_owner_docker:wpNz3yCBXMj6@db:5432/db_shopper_docker?sslmode=disable
+      PORT: "3333"
+      CORS_ORIGIN: "*"
+      GEMINI_API_KEY: "AIzaSyDbmJxeybDuDGQmrATsj8DR3sU9Vcr7g1k"
+      FILE_IO_API_KEY: "6AIA2XA.8PVBRGQ-WQZ476M-PHC2Z8H-ZNVTB33"
+    depends_on:
+      - db
+    command: /usr/local/bin/init.sh
+
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_DB: db_shopper_docker
+      POSTGRES_USER: db_shopper_owner_docker
+      POSTGRES_PASSWORD: wpNz3yCBXMj6
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
