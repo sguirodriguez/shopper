@@ -39,7 +39,7 @@ class ListAllMeasures {
     const hasType = measure_type ? { type: measure_type.toLowerCase() } : {};
     const measures = await Measures.findAll({
       where: {
-        customerId: Number(customer_code),
+        customer_id: Number(customer_code),
         ...hasType
       }
     });

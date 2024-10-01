@@ -44,7 +44,8 @@ class ConfirmMeasure {
 
     await Measures.update(
       {
-        confirmed_value: confirmed_value
+        confirmed_value: confirmed_value,
+        updated_at: new Date()
       },
       {
         where: {

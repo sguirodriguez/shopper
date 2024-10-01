@@ -20,13 +20,19 @@ Para rodar esse projeto, atente-se ao docker-compose para as envs do projeto
 
 ## Usando docker
 
-1. Crie a imagem do docker e rode o container com o comando:
+1. Instale as dependências:
+
+```bash
+  npm i
+```
+
+2. Crie a imagem do docker e rode o container com o comando:
 
 ```bash
   npm run docker:up
 ```
 
-2. Aguarde e o server estará online e exposto na porta 3333:
+3. Aguarde e o server estará online e exposto na porta 3333:
 
 ## Usando localmente
 

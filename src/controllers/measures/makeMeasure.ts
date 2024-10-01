@@ -30,7 +30,7 @@ class MakeMeasure {
   }: MeasureType) {
     const validateSchema = MeasureSchema.safeParse({
       image,
-      customerCode: customer_code,
+      customer_code,
       measure_datetime,
       measure_type
     });
@@ -50,7 +50,7 @@ class MakeMeasure {
     const endOfMonth = dayjs().endOf("month").toDate();
     const hasMeasure = await Measures.findAll({
       where: {
-        measuredAt: {
+        measure_datetime: {
           [Op.gte]: startOfMonth,
           [Op.lt]: endOfMonth
         },
@@ -101,12 +101,14 @@ class MakeMeasure {
 
     const measure = await Measures.create({
       uuid,
-      customerId: Number(customer_code),
-      imageData: base64String,
-      imageExtension: extension,
+      customer_id: Number(customer_code),
+      image_data: base64String,
+      image_extension: extension,
       value: Number(measureValue),
       type: measure_type,
-      measuredAt: measure_datetime
+      measure_datetime: measure_datetime,
+      created_at: new Date(),
+      updated_at: new Date()
     });
 
     return {
