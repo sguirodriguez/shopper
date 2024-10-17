@@ -17,8 +17,8 @@ services:
       DB_CONNECTION: postgres://db_shopper_owner_docker:wpNz3yCBXMj6@db:5432/db_shopper_docker?sslmode=disable
       PORT: "3333"
       CORS_ORIGIN: "*"
-      GEMINI_API_KEY: "AIzaSyDbmJxeybDuDGQmrATsj8DR3sU9Vcr7g1k"
-      FILE_IO_API_KEY: "6AIA2XA.8PVBRGQ-WQZ476M-PHC2Z8H-ZNVTB33"
+      GEMINI_API_KEY: ""
+      FILE_IO_API_KEY: ""
     depends_on:
       - db
     command: /usr/local/bin/init.sh
